@@ -165,4 +165,92 @@ window.addEventListener('load', () => {
     }, 100);
 });
 
-console.log('Apon Store website loaded successfully! 🎉');
+// Animated particles effect for hero section
+function heroParticles() {
+    const canvas = document.getElementById('heroParticles');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let w = canvas.width = window.innerWidth;
+    let h = canvas.height = window.innerHeight;
+    let particles = [];
+    const PARTICLE_COUNT = Math.round(w / 26);
+    const COLORS = ['#f59e0b','#64e4fa','#ee96f7','#a7f650','#f5d442','#2563eb'];
+
+    function randomBetween(a, b) {return a + Math.random() * (b - a);}
+
+    function createParticles() {
+        particles = [];
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+            let angle = Math.random() * 2 * Math.PI;
+            let speed = randomBetween(0.5, 1.8);
+            particles.push({
+                x: randomBetween(0, w),
+                y: randomBetween(0, h),
+                r: randomBetween(4, 8),
+                color: COLORS[Math.floor(Math.random()*COLORS.length)],
+                dx: Math.cos(angle) * speed,
+                dy: Math.sin(angle) * speed,
+                alpha: randomBetween(0.34, 0.8)
+            });
+        }
+    }
+
+    function drawGradient() {
+        let grad = ctx.createLinearGradient(0,0,w,h);
+        grad.addColorStop(0, '#667eea');
+        grad.addColorStop(1, '#764ba2');
+        ctx.fillStyle = grad;
+        ctx.globalAlpha = 0.6;
+        ctx.fillRect(0,0,w,h);
+    }
+
+    function drawParticles() {
+        for (let p of particles) {
+            ctx.globalAlpha = p.alpha;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+            ctx.fillStyle = p.color;
+            ctx.shadowColor = p.color;
+            ctx.shadowBlur = 18;
+            ctx.fill();
+            ctx.shadowBlur = 0;
+        }
+        ctx.globalAlpha = 1.0;
+    }
+
+    function updateParticles() {
+        for (let p of particles) {
+            p.x += p.dx;
+            p.y += p.dy;
+            p.alpha += Math.sin(performance.now()/700+p.r) * 0.006;
+            if (p.x < -10 || p.x > w+10 || p.y < -10 || p.y > h+10) {
+                p.x = randomBetween(0, w);
+                p.y = randomBetween(0, h);
+            }
+            if (p.alpha < 0.35) p.alpha = 0.35;
+            if (p.alpha > 0.8) p.alpha = 0.8;
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0,0,w,h);
+        drawGradient();
+        drawParticles();
+        updateParticles();
+        requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', ()=>{
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+        createParticles();
+    });
+
+    createParticles();
+    animate();
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+    heroParticles();
+});
+
