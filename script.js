@@ -252,5 +252,9 @@ function heroParticles() {
 
 document.addEventListener('DOMContentLoaded',()=>{
     heroParticles();
+    
+    // Language switcher functionality
+    document.getElementById('langBn')?.addEventListener('click', () => setLanguage('bn'));
+    document.getElementById('langEn')?.addEventListener('click', () => setLanguage('en'));
 });
 

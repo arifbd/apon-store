@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
           rel="stylesheet">
+    <script src="translations.js"></script>
 </head>
 <body>
 <!-- Navigation -->
@@ -22,12 +23,16 @@
                 <img src="images/apon-logo.png" alt="Apon Store Logo" style="height: 60px; margin-right: 10px;">
             </div>
             <ul class="nav-links">
-                <li><a href="#home">হোম</a></li>
-                <li><a href="#products">পণ্য</a></li>
-                <li><a href="#gallery">গ্যালারি</a></li>
-                <li><a href="#about">আমাদের সম্পর্কে</a></li>
-                <li><a href="#contact">যোগাযোগ</a></li>
-            </ul>
+                <li><a href="#home"><span data-lang="bn">হোম</span><span data-lang="en" style="display:none">Home</span></a></li>
+                <li><a href="#products"><span data-lang="bn">পণ্য</span><span data-lang="en" style="display:none">Products</span></a></li>
+                <li><a href="#gallery"><span data-lang="bn">গ্যালারি</span><span data-lang="en" style="display:none">Gallery</span></a></li>
+                <li><a href="#about"><span data-lang="bn">আমাদের সম্পর্কে</span><span data-lang="en" style="display:none">About</span></a></li>
+                <li><a href="#contact"><span data-lang="bn">যোগাযোগ</span><span data-lang="en" style="display:none">Contact</span></a></li>
+                </ul>
+                <div class="lang-switcher">
+                  <button id="langBn" class="lang-btn active">বাংলা</button> |
+                  <button id="langEn" class="lang-btn">English</button>
+                </div>
             <button class="mobile-menu-toggle" id="mobileMenuToggle">
                 <span></span>
                 <span></span>
@@ -42,9 +47,9 @@
     <canvas id="heroParticles" class="hero-particles"></canvas>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-        <h2 class="hero-title">স্বাগতম আপন স্টোর এ</h2>
-        <p class="hero-subtitle">কক্সবাজার লাবনি পয়েন্ট এর সেরা ফুটওয়্যার, জুয়েলারি ও এক্সেসরিজের দোকান</p>
-        <a href="#products" class="cta-button">আমাদের পণ্য দেখুন</a>
+        <h2 class="hero-title"><span data-lang="bn">স্বাগতম আপন স্টোর এ</span><span data-lang="en" style="display:none">Welcome to Apon Store</span></h2>
+<p class="hero-subtitle"><span data-lang="bn">কক্সবাজার লাবনি পয়েন্ট এর সেরা ফুটওয়্যার, জুয়েলারি ও এক্সেসরিজের দোকান</span><span data-lang="en" style="display:none">Best footwear, jewelry & accessories shop at Laboni Point, Cox’s Bazar</span></p>
+<a href="#products" class="cta-button"><span data-lang="bn">আমাদের পণ্য দেখুন</span><span data-lang="en" style="display:none">See Our Products</span></a>
     </div>
 </section>
 
